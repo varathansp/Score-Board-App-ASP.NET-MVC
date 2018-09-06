@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ScoreBoardApp.Models.Fixture>
+
+<h2>Carrom Results</h2>
+
+
+@foreach (var item in Model)
+{
+    <table class="table" border="1" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;background-color:whitesmoke">
+        <tr>
+
+            <td rowspan="3" align="center">
+                <br>
+                @Html.DisplayFor(modelItem => item.gameType)
+                <br>
+                Date: @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td align="left">@Html.DisplayFor(modelItem => item.tm1pl1)</td>
+            <td align="right">@Html.DisplayFor(modelItem => item.tm2pl1)</td>
+            <td rowspan="3" align="center">
+                Winners
+                <br />
+                <img height="60" width="60" src="~/Content/Images/animated winner2.gif" />
+                <br />
+                <font color="green" size="5"> <b><i> @Html.DisplayFor(modelItem => item.winner)</i></b></font>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2" align="center" style="font-size:larger;font-weight:700">
+                <i style="color:darkblue"><font size="6">  @Html.DisplayFor(modelItem => item.team1) VS @Html.DisplayFor(modelItem => item.team2)</font></i>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">@Html.DisplayFor(modelItem => item.tm1pl2)</td>
+            <td align="right">@Html.DisplayFor(modelItem => item.tm2pl2)</td>
+        </tr>
+    </table>
+
+}
+

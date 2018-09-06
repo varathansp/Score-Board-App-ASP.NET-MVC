@@ -1,0 +1,226 @@
+﻿@model IEnumerable<ScoreBoardApp.Models.TeamRankView>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mp Score Board</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/Menu.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dropdownxyz-content').click(function () {
+                $('.dropdownxyz-content').hide(200);
+
+            });
+            $('.dropbtnxyz').hover(function () {
+                $(this).next('.dropdownxyz-content').show(200);
+
+            });
+
+            $("#ddm1").mouseleave(function () {
+                $("#ddm11").hide(200);
+
+            });
+            $("#ddm2").mouseleave(function () {
+                $("#ddm22").hide(200);
+
+            });
+            $("#ddm3").mouseleave(function () {
+                $("#ddm33").hide(200);
+
+            });
+
+
+        });
+        //$(document).on('click', '.dropdownxyz-content', function () {
+        //    $('.dropdownxyz-content').hide(100);
+        //});
+        //$(document).on('hover', '.dropbtnxyz', function () {
+        //    $('.dropdownxyz-content').show();
+        //});
+        //$('.dropdownxyz-content').click(function () {
+        //    $('.dropdownxyz-content').hide();
+        //});
+
+
+    </script>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        @Html.ActionLink("Team Standings", "","",null,null)
+
+        <div id="ddm1" class="dropdownxyz">
+            <button class="dropbtnxyz">
+                Fixtures
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="ddm11" class="dropdownxyz-content">
+                @Ajax.ActionLink("Badminton", "BadmintonFixtures", "Home",new AjaxOptions { HttpMethod = "GET",UpdateTargetId = "divPartial",InsertionMode = InsertionMode.Replace,LoadingElementId = "divAjaxLoding"})
+                @Ajax.ActionLink("Carrom", "CarromFixtures", "Home",new AjaxOptions {HttpMethod = "GET",UpdateTargetId = "divPartial",InsertionMode = InsertionMode.Replace,LoadingElementId= "divAjaxLoding"})
+
+                @Ajax.ActionLink("Chess", "ChessFixtures", "Home",new AjaxOptions{ HttpMethod = "GET",UpdateTargetId = "divPartial",InsertionMode = InsertionMode.Replace,LoadingElementId = "divAjaxLoding"})
+                @Ajax.ActionLink("Table Tennis", "TTFixtures", "Home", new AjaxOptions{ HttpMethod = "GET",UpdateTargetId = "divPartial",InsertionMode = InsertionMode.Replace ,LoadingElementId = "divAjaxLoding"})
+            </div>
+        </div>
+        <div id="ddm2" class="dropdownxyz">
+            <button class="dropbtnxyz">
+                Results
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="ddm22" class="dropdownxyz-content">
+                @Ajax.ActionLink("Badminton", "BadmintonResults", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+                @Ajax.ActionLink("Carrom", "CarromResults", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+
+                @Ajax.ActionLink("Chess", "ChessResults", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+                @Ajax.ActionLink("Table Tennis", "TTResults", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+
+
+            </div>
+        </div>
+        <div id="ddm3" class="dropdownxyz">
+            <button class="dropbtnxyz">
+                Player Standings
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="ddm33" class="dropdownxyz-content">
+                @Ajax.ActionLink("Overall", "OverallPlayerStandings", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding"})
+                @Ajax.ActionLink("Badminton", "BadmintonPlayerStandings", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+                @Ajax.ActionLink("Carrom", "CarromPlayerStandings", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+
+                @Ajax.ActionLink("Chess", "ChessPlayerStandings", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+                @Ajax.ActionLink("Table Tennis", "TTPlayerStandings", "Home", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divPartial", InsertionMode = InsertionMode.Replace, LoadingElementId = "divAjaxLoding" })
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        @Html.ActionLink("Score Board", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div id="divAjaxLoding" style="display:none">
+        <p style="color:white">&nbsp;&nbsp;<b>Loading</b></p>
+        <img height="100" width="100" src="~/Content/Images/lg.comet-spinner.gif" />
+
+    </div>
+    @RenderBody()
+    <div id="divPartial" class="container body-content">
+        @if (Model != null) {
+            <br />
+            <br />
+            <br />
+            <br />
+        }
+        <table class="table">
+            <tr>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.Rank)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.teamName)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.badmintonPoints)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.caromPoints)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.chessPoints)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.ttPoints)
+                </th>
+                <th align="center">
+                    @Html.DisplayNameFor(model => model.totalPoints)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @{if (item.Rank == 1)
+                        {
+                             <td style="background-color:#4CAF50">
+                                    @Html.DisplayFor(modelItem => item.Rank)
+                                </td>}
+                        else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Rank)
+                            </td>
+                        }
+                    }
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.teamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.badmintonPoints)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.caromPoints)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.chessPoints)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ttPoints)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalPoints)
+                    </td>
+
+                </tr>
+                        }
+
+        </table>
+
+
+    </div>
+
+    @*<div id="divAjaxLoding2" style="display:none">
+            <p style="color:white">&nbsp;&nbsp;<b>Loading</b></p>
+            <img height="80" width="80" src="~/Content/Images/lg.comet-spinner.gif" />
+
+        </div>*@
+    <div class="container body-content">
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - An open ASP.NET MVC app. Rights are not reserved</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

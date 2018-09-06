@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ScoreBoardApp.Models.Team>
+
+@{
+    ViewBag.Title = "TeamIndex";
+}
+
+<h2>Team Details</h2>
+
+<p>
+    @Html.ActionLink("Create New Team", "CreateTeam","Admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.teamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.badmintonPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.caromPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.chessPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ttPoints)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPoints)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.teamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.badmintonPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.caromPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chessPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ttPoints)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPoints)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTeam", new { teamName=item.teamName }) |
+           @Html.ActionLink("Delete", "DeleteTeam", new {  teamName=item.teamName  }, new { onclick = "return confirm('Are you sure you wish to delete this Team?');" })
+        </td>
+    </tr>
+}
+
+</table>
