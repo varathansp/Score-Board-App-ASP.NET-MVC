@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScoreBoardDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="employeeID" Type="Int32" />
+    <Property Name="team" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="badmintonPoints" Type="Int32" />
+    <Property Name="caromPoints" Type="Int32" />
+    <Property Name="chessPoints" Type="Int32" />
+    <Property Name="ttPoints" Type="Int32" />
+    <Property Name="totalPoints" Type="Int32" />
+    <NavigationProperty Name="Team1" Relationship="Self.FK__Player__team__29572725" FromRole="Player" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="teamName" />
+    </Key>
+    <Property Name="teamName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="badmintonPoints" Type="Int32" />
+    <Property Name="caromPoints" Type="Int32" />
+    <Property Name="chessPoints" Type="Int32" />
+    <Property Name="ttPoints" Type="Int32" />
+    <Property Name="totalPoints" Type="Int32" />
+    <NavigationProperty Name="Players" Relationship="Self.FK__Player__team__29572725" FromRole="Team" ToRole="Player" />
+  </EntityType>
+  <EntityType Name="UserIdentity">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Player__team__29572725">
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="teamName" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="team" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ScoreBoardDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="Teams" EntityType="Self.Team" />
+    <EntitySet Name="UserIdentities" EntityType="Self.UserIdentity" />
+    <AssociationSet Name="FK__Player__team__29572725" Association="Self.FK__Player__team__29572725">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Player" EntitySet="Players" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

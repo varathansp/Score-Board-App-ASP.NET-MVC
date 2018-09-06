@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ScoreBoardApp.Models.Fixture>
+
+@{
+    ViewBag.Title = "FixturesIndex";
+}
+
+<h2>Fixtures Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateFixture")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.gameType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team1)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.tm1pl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tm1pl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tm2pl1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tm2pl2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team1Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.team2Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.winner)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.gameType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team1)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.tm1pl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tm1pl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tm2pl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tm2pl2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.venue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team1Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.team2Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.winner)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditFixture", new {  gameID=item.gameID }) |
+           @Html.ActionLink("Delete", "DeleteFixture", new { gameID = item.gameID }, new { onclick = "return confirm('Are you sure you wish to delete this Fixture?');" })
+        </td>
+    </tr>
+}
+
+</table>

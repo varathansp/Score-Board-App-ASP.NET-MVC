@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScoreBoardDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Fixtures">
+    <Key>
+      <PropertyRef Name="gameID" />
+    </Key>
+    <Property Name="gameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gameType" Type="varchar" MaxLength="20" />
+    <Property Name="team1" Type="varchar" MaxLength="20" />
+    <Property Name="team2" Type="varchar" MaxLength="20" />
+    <Property Name="tm1pl1" Type="varchar" MaxLength="20" />
+    <Property Name="tm1pl2" Type="varchar" MaxLength="20" />
+    <Property Name="tm2pl1" Type="varchar" MaxLength="20" />
+    <Property Name="tm2pl2" Type="varchar" MaxLength="20" />
+    <Property Name="venue" Type="varchar" MaxLength="40" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="time" Type="varchar" MaxLength="20" />
+    <Property Name="team1Score" Type="varchar" MaxLength="20" />
+    <Property Name="team2Score" Type="varchar" MaxLength="20" />
+    <Property Name="winner" Type="varchar" MaxLength="20" />
+    <Property Name="gameName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="teamName" />
+    </Key>
+    <Property Name="teamName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="UserIdentity">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.plyerBadmintonRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="plyerBadmintonRankView">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="playerRank" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.plyerCarromRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="plyerCarromRankView">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="playerRank" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.plyerChessRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="plyerChessRankView">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="playerRank" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.plyerRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="plyerRankView">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="playerRank" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.plyerTTRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="plyerTTRankView">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="playerRank" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScoreBoardDB.dbo.TeamRankView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TeamRankView">
+    <Key>
+      <PropertyRef Name="teamName" />
+    </Key>
+    <Property Name="teamName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+    <Property Name="Rank" Type="bigint" />
+  </EntityType>
+  <Association Name="FK__Player__team__29572725">
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="teamName" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="team" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ScoreBoardDBModelStoreContainer">
+    <EntitySet Name="Fixtures" EntityType="Self.Fixtures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserIdentity" EntityType="Self.UserIdentity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plyerBadmintonRankView" EntityType="Self.plyerBadmintonRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [plyerBadmintonRankView].[playerName] AS [playerName], 
+    [plyerBadmintonRankView].[employeeID] AS [employeeID], 
+    [plyerBadmintonRankView].[team] AS [team], 
+    [plyerBadmintonRankView].[badmintonPoints] AS [badmintonPoints], 
+    [plyerBadmintonRankView].[caromPoints] AS [caromPoints], 
+    [plyerBadmintonRankView].[chessPoints] AS [chessPoints], 
+    [plyerBadmintonRankView].[ttPoints] AS [ttPoints], 
+    [plyerBadmintonRankView].[totalPoints] AS [totalPoints], 
+    [plyerBadmintonRankView].[playerRank] AS [playerRank]
+    FROM [dbo].[plyerBadmintonRankView] AS [plyerBadmintonRankView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="plyerCarromRankView" EntityType="Self.plyerCarromRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [plyerCarromRankView].[playerName] AS [playerName], 
+    [plyerCarromRankView].[employeeID] AS [employeeID], 
+    [plyerCarromRankView].[team] AS [team], 
+    [plyerCarromRankView].[badmintonPoints] AS [badmintonPoints], 
+    [plyerCarromRankView].[caromPoints] AS [caromPoints], 
+    [plyerCarromRankView].[chessPoints] AS [chessPoints], 
+    [plyerCarromRankView].[ttPoints] AS [ttPoints], 
+    [plyerCarromRankView].[totalPoints] AS [totalPoints], 
+    [plyerCarromRankView].[playerRank] AS [playerRank]
+    FROM [dbo].[plyerCarromRankView] AS [plyerCarromRankView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="plyerChessRankView" EntityType="Self.plyerChessRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [plyerChessRankView].[playerName] AS [playerName], 
+    [plyerChessRankView].[employeeID] AS [employeeID], 
+    [plyerChessRankView].[team] AS [team], 
+    [plyerChessRankView].[badmintonPoints] AS [badmintonPoints], 
+    [plyerChessRankView].[caromPoints] AS [caromPoints], 
+    [plyerChessRankView].[chessPoints] AS [chessPoints], 
+    [plyerChessRankView].[ttPoints] AS [ttPoints], 
+    [plyerChessRankView].[totalPoints] AS [totalPoints], 
+    [plyerChessRankView].[playerRank] AS [playerRank]
+    FROM [dbo].[plyerChessRankView] AS [plyerChessRankView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="plyerRankView" EntityType="Self.plyerRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [plyerRankView].[playerName] AS [playerName], 
+    [plyerRankView].[employeeID] AS [employeeID], 
+    [plyerRankView].[team] AS [team], 
+    [plyerRankView].[badmintonPoints] AS [badmintonPoints], 
+    [plyerRankView].[caromPoints] AS [caromPoints], 
+    [plyerRankView].[chessPoints] AS [chessPoints], 
+    [plyerRankView].[ttPoints] AS [ttPoints], 
+    [plyerRankView].[totalPoints] AS [totalPoints], 
+    [plyerRankView].[playerRank] AS [playerRank]
+    FROM [dbo].[plyerRankView] AS [plyerRankView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="plyerTTRankView" EntityType="Self.plyerTTRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [plyerTTRankView].[playerName] AS [playerName], 
+    [plyerTTRankView].[employeeID] AS [employeeID], 
+    [plyerTTRankView].[team] AS [team], 
+    [plyerTTRankView].[badmintonPoints] AS [badmintonPoints], 
+    [plyerTTRankView].[caromPoints] AS [caromPoints], 
+    [plyerTTRankView].[chessPoints] AS [chessPoints], 
+    [plyerTTRankView].[ttPoints] AS [ttPoints], 
+    [plyerTTRankView].[totalPoints] AS [totalPoints], 
+    [plyerTTRankView].[playerRank] AS [playerRank]
+    FROM [dbo].[plyerTTRankView] AS [plyerTTRankView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TeamRankView" EntityType="Self.TeamRankView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TeamRankView].[teamName] AS [teamName], 
+    [TeamRankView].[badmintonPoints] AS [badmintonPoints], 
+    [TeamRankView].[caromPoints] AS [caromPoints], 
+    [TeamRankView].[chessPoints] AS [chessPoints], 
+    [TeamRankView].[ttPoints] AS [ttPoints], 
+    [TeamRankView].[totalPoints] AS [totalPoints], 
+    [TeamRankView].[Rank] AS [Rank]
+    FROM [dbo].[TeamRankView] AS [TeamRankView]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Player__team__29572725" Association="Self.FK__Player__team__29572725">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="Player" EntitySet="Player" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

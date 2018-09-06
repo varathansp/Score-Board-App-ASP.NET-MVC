@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScoreBoardDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerName" />
+    </Key>
+    <Property Name="playerName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="employeeID" Type="int" />
+    <Property Name="team" Type="varchar" MaxLength="20" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="teamName" />
+    </Key>
+    <Property Name="teamName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="badmintonPoints" Type="int" />
+    <Property Name="caromPoints" Type="int" />
+    <Property Name="chessPoints" Type="int" />
+    <Property Name="ttPoints" Type="int" />
+    <Property Name="totalPoints" Type="int" />
+  </EntityType>
+  <EntityType Name="UserIdentity">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Player__team__29572725">
+    <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+    <End Role="Player" Type="Self.Player" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="teamName" />
+      </Principal>
+      <Dependent Role="Player">
+        <PropertyRef Name="team" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ScoreBoardDBModelStoreContainer">
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserIdentity" EntityType="Self.UserIdentity" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Player__team__29572725" Association="Self.FK__Player__team__29572725">
+      <End Role="Team" EntitySet="Team" />
+      <End Role="Player" EntitySet="Player" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ScoreBoardApp.Models.plyerRankView>
+<link href="~/Content/PlayerStandings.css" rel="stylesheet" />
+
+<div id="generic_price_table">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--PRICE HEADING START-->
+                    <div class="price-heading clearfix">
+                        <h1>Overall Player Standings</h1>
+                    </div>
+                    <!--//PRICE HEADING END-->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <!--BLOCK ROW START-->
+            <div class="row">
+                <!--my Foreachloop-->
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+
+                        <!--PRICE CONTENT START-->
+                        <div class="generic_content active clearfix">
+
+                            <!--HEAD PRICE DETAIL START-->
+                            <div class="generic_head_price clearfix" style="margin:0 0 0px 0">
+
+                                <!--HEAD CONTENT START-->
+                                <div class="generic_head_content clearfix" style="margin:0 0 20px 0">
+
+                                    <!--HEAD START-->
+                                    <div class="head_bg"></div>
+                                    <div class="head">
+                                        <span>@item.playerName</span>
+                                    </div>
+                                    <!--//HEAD END-->
+
+                                </div>
+                                <!--//HEAD CONTENT END-->
+                                <!--PRICE START-->
+                                <div class="generic_price_tag clearfix" style="padding:0 0 0px " >
+
+                                    <font size="10" color="#4CAF50"> @item.team</font>
+                                    @*<span class="sign">$</span>
+                                        <span class="currency">199</span>
+                                        <span class="cent">.99</span>
+                                        <span class="month">/MON</span>*@
+
+                                </div>
+                                <!--//PRICE END-->
+
+                            </div>
+                            <!--//HEAD PRICE DETAIL END-->
+                            <!--FEATURE LIST START-->
+                            <div class="generic_feature_list" style="background-color:whitesmoke">
+                                <ul>
+                                    <li> Rank&nbsp;<span>@item.playerRank</span></li>
+                                    <li>Employee ID&nbsp;<span>@item.employeeID</span></li>
+                                   @*<li>Points Contributed &nbsp;<span>@item.badmintonPoints</span></li>*@
+                                    <li>Points Contributed&nbsp;<span>@item.totalPoints</span> </li>
+                                </ul>
+                            </div>
+                            <!--//FEATURE LIST END-->
+                            <!--BUTTON START-->
+
+                            <!--//BUTTON END-->
+
+                        </div>
+                        <!--//PRICE CONTENT END-->
+                        <br />
+                    </div>
+                }
+
+            </div>
+            <!--//BLOCK ROW END-->
+          
+        </div>
+    </section>
+
+</div>

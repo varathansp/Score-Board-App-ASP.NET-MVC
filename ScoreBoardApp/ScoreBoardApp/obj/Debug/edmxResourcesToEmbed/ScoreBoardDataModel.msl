@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ScoreBoardDBModelStoreContainer" CdmEntityContainer="ScoreBoardDBEntities">
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="ScoreBoardDBModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="playerName" ColumnName="playerName" />
+          <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+          <ScalarProperty Name="team" ColumnName="team" />
+          <ScalarProperty Name="badmintonPoints" ColumnName="badmintonPoints" />
+          <ScalarProperty Name="caromPoints" ColumnName="caromPoints" />
+          <ScalarProperty Name="chessPoints" ColumnName="chessPoints" />
+          <ScalarProperty Name="ttPoints" ColumnName="ttPoints" />
+          <ScalarProperty Name="totalPoints" ColumnName="totalPoints" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="ScoreBoardDBModel.Team">
+        <MappingFragment StoreEntitySet="Team">
+          <ScalarProperty Name="teamName" ColumnName="teamName" />
+          <ScalarProperty Name="badmintonPoints" ColumnName="badmintonPoints" />
+          <ScalarProperty Name="caromPoints" ColumnName="caromPoints" />
+          <ScalarProperty Name="chessPoints" ColumnName="chessPoints" />
+          <ScalarProperty Name="ttPoints" ColumnName="ttPoints" />
+          <ScalarProperty Name="totalPoints" ColumnName="totalPoints" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserIdentities">
+      <EntityTypeMapping TypeName="ScoreBoardDBModel.UserIdentity">
+        <MappingFragment StoreEntitySet="UserIdentity">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
